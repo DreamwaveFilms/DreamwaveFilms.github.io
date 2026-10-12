@@ -1,0 +1,23 @@
+/* Lightweight cinematic scene: gradients, inline SVG, transform and opacity only. */
+body{position:relative;isolation:isolate;background:#05070b}
+.wrap{position:relative;z-index:1}
+.cinema-scene{position:absolute;inset:0 0 auto;height:min(1150px,150vh);overflow:hidden;pointer-events:none;z-index:0;contain:paint;--rift-width:.16;--rift-height:.68;--rift-opacity:.5}
+.cinema-scene::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,7,11,.12),rgba(5,7,11,.25) 34%,rgba(5,7,11,.72) 67%,#05070b 100%)}
+.rift-nebula{position:absolute;inset:-12%;background:radial-gradient(ellipse at 28% 25%,#43307555,transparent 48%),radial-gradient(ellipse at 73% 38%,#07576640,transparent 43%);animation:nebula-drift 28s ease-in-out infinite alternate}
+.rift-stars{position:absolute;inset:0;background-image:radial-gradient(circle at 15% 26%,#c8d4f070 0 1px,transparent 1.7px),radial-gradient(circle at 80% 19%,#91cce16b 0 1px,transparent 1.7px),radial-gradient(circle at 64% 54%,#c8d4f04d 0 1px,transparent 1.5px),radial-gradient(circle at 31% 66%,#c8d4f03d 0 1px,transparent 1.5px);background-size:470px 520px;opacity:.5;animation:star-drift 40s ease-in-out infinite alternate}
+.rift-anchor{position:absolute;top:25px;left:50%;width:min(480px,90vw);height:min(880px,110vh);transform:translateX(-50%)}
+.rift-opening{height:100%;width:100%;transform:scale(var(--rift-width),var(--rift-height));transform-origin:50% 40%;opacity:var(--rift-opacity);transition:transform 3s ease,opacity 3s ease}
+.rift-opening svg{display:block;width:100%;height:100%;overflow:visible;animation:rift-breathe 9s ease-in-out infinite alternate}
+.hero h1{text-shadow:0 3px 24px #000,0 0 65px #090b12}
+.hero p,.eyebrow,.release,.count-title{text-shadow:0 2px 9px #05070b}
+.header-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.motion-toggle{font:inherit;font-size:11px;cursor:pointer;padding:7px 10px;border-radius:999px;border:1px solid #34364d;background:#0c101ad9;color:#b6bfcd}
+.motion-toggle:hover{border-color:#9b8acc;color:#fff}
+.motion-toggle:focus-visible{outline:2px solid #a999ff;outline-offset:4px}
+.motion-paused .cinema-scene *{animation-play-state:paused!important}
+.motion-paused .rift-opening{transition:none}
+@keyframes nebula-drift{from{transform:translate3d(-2%,0,0) scale(1)}to{transform:translate3d(3%,2%,0) scale(1.06)}}
+@keyframes star-drift{from{transform:translateY(0)}to{transform:translateY(-24px)}}
+@keyframes rift-breathe{from{opacity:.72;transform:translateY(-3px)}to{opacity:1;transform:translateY(3px)}}
+@media(max-width:600px){header{gap:12px;align-items:flex-start}.brand{font-size:13px;padding-top:6px}.header-actions{max-width:175px;gap:6px}.badge{font-size:10px}.motion-toggle{font-size:10px}.rift-anchor{top:70px}.cinema-scene{height:1000px}}
+@media(prefers-reduced-motion:reduce){.cinema-scene *{animation:none!important;transition:none!important}.motion-toggle{display:none}}
