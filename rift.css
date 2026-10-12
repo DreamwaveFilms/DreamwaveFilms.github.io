@@ -21,3 +21,17 @@ body{position:relative;isolation:isolate;background:#05070b}
 @keyframes rift-breathe{from{opacity:.72;transform:translateY(-3px)}to{opacity:1;transform:translateY(3px)}}
 @media(max-width:600px){header{gap:12px;align-items:flex-start}.brand{font-size:13px;padding-top:6px}.header-actions{max-width:175px;gap:6px}.badge{font-size:10px}.motion-toggle{font-size:10px}.rift-anchor{top:70px}.cinema-scene{height:1000px}}
 @media(prefers-reduced-motion:reduce){.cinema-scene *{animation:none!important;transition:none!important}.motion-toggle{display:none}}
+
+/* v2: depth, slow edge currents and eight drifting motes. No videos or frame loop. */
+.rift-aura{position:absolute;inset:3% -25% 7%;background:radial-gradient(ellipse at 48% 37%,#8965db2e,transparent 56%),radial-gradient(ellipse at 53% 56%,#38bccc1c,transparent 48%);transform-origin:50% 45%;animation:rift-aura-drift 17s ease-in-out infinite alternate}
+.rift-current{stroke-dasharray:4 12 1 22;opacity:.6;animation:rift-current-flow 24s linear infinite}
+.rift-current-b{stroke-dasharray:2 18 5 25;animation-duration:31s;animation-direction:reverse;opacity:.5}
+.rift-opening svg{animation-duration:12s}
+.rift-motes{position:absolute;inset:0}
+.rift-mote{position:absolute;left:var(--x);top:var(--y);width:2px;height:2px;border-radius:50%;background:#b9c3ff;box-shadow:0 0 6px #a18dff88;opacity:0;animation:rift-mote-rise var(--duration) ease-in-out var(--delay) infinite}
+.rift-mote:nth-child(even){background:#b6efff;box-shadow:0 0 5px #74dfff77}
+@keyframes rift-current-flow{from{stroke-dashoffset:0}to{stroke-dashoffset:-100}}
+@keyframes rift-aura-drift{from{opacity:.5;transform:translate3d(-8px,0,0) scale(.95)}to{opacity:.85;transform:translate3d(8px,-9px,0) scale(1.07)}}
+@keyframes rift-mote-rise{0%{opacity:0;transform:translate3d(0,20px,0)}25%{opacity:.45}70%{opacity:.3}100%{opacity:0;transform:translate3d(var(--drift),-75px,0)}}
+@media(max-width:600px){.rift-mote:nth-child(n+6){display:none}}
+@media(prefers-reduced-motion:reduce){.rift-current{stroke-dasharray:none;opacity:.25}.rift-aura{opacity:.6}.rift-mote{opacity:.2}}
