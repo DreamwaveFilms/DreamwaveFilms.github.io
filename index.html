@@ -15,12 +15,12 @@
 .online-viewers[data-state="live"] .online-dot{background:#55e6a5;box-shadow:0 0 10px #55e6a544}
 .online-viewers[data-state="offline"]{border-color:var(--line);color:var(--muted)}
 </style>
-<link rel="stylesheet" href="/rift.css?v=1">
+<link rel="stylesheet" href="/rift.css?v=2">
 </head>
 <body>
 <div class="cinema-scene" aria-hidden="true">
 <div class="rift-nebula"></div><div class="rift-stars"></div>
-<div class="rift-anchor"><div class="rift-opening">
+<div class="rift-anchor"><div class="rift-aura"></div><div class="rift-opening">
 <svg viewBox="0 0 400 900" preserveAspectRatio="none" focusable="false" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <linearGradient id="rift-fill" x1="0" x2="1"><stop stop-color="#8052d2" stop-opacity=".35"/><stop offset=".35" stop-color="#050710"/><stop offset=".65" stop-color="#080b16"/><stop offset="1" stop-color="#56d7ed" stop-opacity=".32"/></linearGradient>
@@ -31,8 +31,14 @@
 <path d="M210 10 188 138 145 222 163 278 105 371 125 417 95 502 152 565 140 630 185 732 193 860 221 737 246 642 238 582 290 492 269 436 298 342 249 280 260 208 228 133Z" fill="url(#rift-fill)" stroke="url(#rift-edge)" stroke-width="18" stroke-opacity=".09"/>
 <path d="M210 10 188 138 145 222 163 278 105 371 125 417 95 502 152 565 140 630 185 732 193 860 M193 860 221 737 246 642 238 582 290 492 269 436 298 342 249 280 260 208 228 133 210 10" fill="none" stroke="url(#rift-edge)" stroke-width="3"/>
 <path d="m145 222-36-28-12-50m8 227-37-32-18 13m45 150-37 38 9 32m193-364 40-31 8-45m-10 210 38-39 17 10m-63 179 45 26 9 43m-98 81 26 44" fill="none" stroke="url(#rift-edge)" stroke-width="1.5" opacity=".45"/>
-</svg>
-</div></div></div>
+
+<g class="rift-energy" fill="none" stroke-linecap="round">
+<path d="M210 10 188 138 145 222 163 278 105 371 125 417 95 502 152 565 140 630 185 732 193 860" stroke="#9574ff" stroke-width="10" opacity=".16"/>
+<path d="M193 860 221 737 246 642 238 582 290 492 269 436 298 342 249 280 260 208 228 133 210 10" stroke="#64dfff" stroke-width="10" opacity=".16"/>
+<path class="rift-current rift-current-a" d="M210 10 188 138 145 222 163 278 105 371 125 417 95 502 152 565 140 630 185 732 193 860" pathLength="100" stroke="#e0c9ff" stroke-width="1.2" vector-effect="non-scaling-stroke"/>
+<path class="rift-current rift-current-b" d="M193 860 221 737 246 642 238 582 290 492 269 436 298 342 249 280 260 208 228 133 210 10" pathLength="100" stroke="#bcf6ff" stroke-width="1.2" vector-effect="non-scaling-stroke"/>
+</g></svg>
+</div><div class="rift-motes"><i class="rift-mote" style="--x:33%;--y:34%;--delay:-0s;--duration:14s;--drift:-18px"></i><i class="rift-mote" style="--x:62%;--y:51%;--delay:-2.7s;--duration:15.3s;--drift:18px"></i><i class="rift-mote" style="--x:45%;--y:68%;--delay:-5.4s;--duration:16.6s;--drift:-18px"></i><i class="rift-mote" style="--x:71%;--y:42%;--delay:-8.100000000000001s;--duration:17.9s;--drift:18px"></i><i class="rift-mote" style="--x:27%;--y:62%;--delay:-10.8s;--duration:19.2s;--drift:-18px"></i><i class="rift-mote" style="--x:56%;--y:77%;--delay:-13.5s;--duration:20.5s;--drift:18px"></i><i class="rift-mote" style="--x:39%;--y:49%;--delay:-16.200000000000003s;--duration:21.8s;--drift:-18px"></i><i class="rift-mote" style="--x:66%;--y:31%;--delay:-18.900000000000002s;--duration:23.1s;--drift:18px"></i></div></div></div>
 <div class="wrap">
 <header><div class="brand">DREAMWAVE FILMS</div><div class="header-actions"><div class="badge">COMING 2027</div><button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false" hidden>השהיית אנימציה</button></div></header>
 <section class="hero">
