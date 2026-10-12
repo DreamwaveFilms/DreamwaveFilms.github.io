@@ -15,10 +15,26 @@
 .online-viewers[data-state="live"] .online-dot{background:#55e6a5;box-shadow:0 0 10px #55e6a544}
 .online-viewers[data-state="offline"]{border-color:var(--line);color:var(--muted)}
 </style>
+<link rel="stylesheet" href="/rift.css?v=1">
 </head>
 <body>
+<div class="cinema-scene" aria-hidden="true">
+<div class="rift-nebula"></div><div class="rift-stars"></div>
+<div class="rift-anchor"><div class="rift-opening">
+<svg viewBox="0 0 400 900" preserveAspectRatio="none" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="rift-fill" x1="0" x2="1"><stop stop-color="#8052d2" stop-opacity=".35"/><stop offset=".35" stop-color="#050710"/><stop offset=".65" stop-color="#080b16"/><stop offset="1" stop-color="#56d7ed" stop-opacity=".32"/></linearGradient>
+<linearGradient id="rift-edge" x1="0" y1="0" x2=".7" y2="1"><stop stop-color="#b49bea" stop-opacity=".2"/><stop offset=".32" stop-color="#ad8cfa"/><stop offset=".58" stop-color="#a6f1ff"/><stop offset="1" stop-color="#5581c4" stop-opacity="0"/></linearGradient>
+<radialGradient id="rift-halo"><stop stop-color="#7262d2" stop-opacity=".2"/><stop offset="1" stop-color="#7262d2" stop-opacity="0"/></radialGradient>
+</defs>
+<ellipse cx="200" cy="380" rx="195" ry="420" fill="url(#rift-halo)"/>
+<path d="M210 10 188 138 145 222 163 278 105 371 125 417 95 502 152 565 140 630 185 732 193 860 221 737 246 642 238 582 290 492 269 436 298 342 249 280 260 208 228 133Z" fill="url(#rift-fill)" stroke="url(#rift-edge)" stroke-width="18" stroke-opacity=".09"/>
+<path d="M210 10 188 138 145 222 163 278 105 371 125 417 95 502 152 565 140 630 185 732 193 860 M193 860 221 737 246 642 238 582 290 492 269 436 298 342 249 280 260 208 228 133 210 10" fill="none" stroke="url(#rift-edge)" stroke-width="3"/>
+<path d="m145 222-36-28-12-50m8 227-37-32-18 13m45 150-37 38 9 32m193-364 40-31 8-45m-10 210 38-39 17 10m-63 179 45 26 9 43m-98 81 26 44" fill="none" stroke="url(#rift-edge)" stroke-width="1.5" opacity=".45"/>
+</svg>
+</div></div></div>
 <div class="wrap">
-<header><div class="brand">DREAMWAVE FILMS</div><div class="badge">COMING 2027</div></header>
+<header><div class="brand">DREAMWAVE FILMS</div><div class="header-actions"><div class="badge">COMING 2027</div><button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false" hidden>השהיית אנימציה</button></div></header>
 <section class="hero">
 <div class="eyebrow">סרט חדש מבית Dreamwave Films</div>
 <h1>העולם המקביל:<br>הסדק</h1>
@@ -56,4 +72,5 @@ tick();setInterval(tick,1000);
 </script>
 <script defer src="/vendor/supabase-2.117.3.js"></script>
 <script defer src="/online.js"></script>
+<script defer src="/rift.js?v=1"></script>
 </body></html>
