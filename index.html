@@ -9,6 +9,11 @@
 <style>
 :root{--bg:#05070b;--panel:#0d1119;--text:#f4f7fb;--muted:#9aa7b8;--accent:#7c5cff;--accent2:#31d5ff;--line:#1d2635}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#1b1640 0,#090b12 34%,var(--bg) 70%);color:var(--text);font-family:Arial,"Noto Sans Hebrew",sans-serif;line-height:1.5}.wrap{width:min(1100px,92%);margin:auto}header{display:flex;align-items:center;justify-content:space-between;padding:24px 0}.brand{font-weight:900;letter-spacing:.08em}.badge{font-size:12px;color:#d9d2ff;border:1px solid #4b3f82;padding:7px 11px;border-radius:999px;background:#161229}.hero{text-align:center;padding:48px 0 28px}.eyebrow{color:#a999ff;font-weight:700}.hero h1{font-size:clamp(38px,8vw,78px);margin:8px 0 10px;line-height:1}.hero p{color:var(--muted);max-width:720px;margin:0 auto 24px;font-size:clamp(16px,2.2vw,20px)}.count-title{font-size:14px;color:#c8d0dc;margin:25px 0 9px}.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:680px;margin:auto}.unit{background:linear-gradient(180deg,#121827,#0b0f17);border:1px solid var(--line);border-radius:18px;padding:18px 8px}.num{font-size:clamp(27px,6vw,48px);font-weight:900;font-variant-numeric:tabular-nums}.label{font-size:13px;color:var(--muted)}.release{margin-top:12px;color:#cfd8e7}.grid{display:grid;grid-template-columns:.8fr 1.4fr;gap:24px;margin:44px 0}.card{background:rgba(13,17,25,.86);border:1px solid var(--line);border-radius:24px;overflow:hidden}.poster{background:#05070b}.poster img{display:block;width:100%;height:auto;object-fit:contain}.content{padding:24px}.content h2{margin:0 0 8px;font-size:26px}.content p{color:var(--muted)}.video{position:relative;aspect-ratio:16/9;background:#000}.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.cta{display:inline-flex;text-decoration:none;color:white;background:linear-gradient(90deg,var(--accent),#4c9cff);padding:12px 18px;border-radius:12px;font-weight:800;margin-top:8px}.story{margin:0 0 50px;padding:28px}.story h2{margin-top:0}.story p{color:#c0cad8}footer{border-top:1px solid var(--line);padding:26px 0 40px;color:#778497;text-align:center;font-size:13px}@media(max-width:760px){header{padding:18px 0}.hero{padding-top:28px}.grid{grid-template-columns:1fr}.poster{max-height:580px}.countdown{gap:6px}.unit{padding:14px 4px;border-radius:14px}}
+
+.online-viewers{display:inline-flex;align-items:center;justify-content:center;gap:9px;margin:20px auto 0;padding:9px 15px;border:1px solid #28443e;border-radius:999px;background:#101d20;color:#c3d6d0;font-size:13px}
+.online-dot{width:8px;height:8px;border-radius:50%;background:#81908d;flex-shrink:0}
+.online-viewers[data-state="live"] .online-dot{background:#55e6a5;box-shadow:0 0 10px #55e6a544}
+.online-viewers[data-state="offline"]{border-color:var(--line);color:var(--muted)}
 </style>
 </head>
 <body>
@@ -26,6 +31,10 @@
 <div class="unit"><div class="num" id="seconds">--</div><div class="label">שניות</div></div>
 </div>
 <div class="release">4 בינואר 2027 • 18:00 • שעון ישראל</div>
+<div id="online-viewers" class="online-viewers" data-state="loading" role="status" aria-live="polite" aria-atomic="true" title="מספר משוער של דפדפנים עם האתר פתוח בחזית; כולל אותך">
+<span class="online-dot" aria-hidden="true"></span><span id="online-label">מתחבר למונה הגולשים…</span>
+</div>
+<noscript><style>#online-viewers{display:none}</style></noscript>
 </section>
 <section class="grid">
 <div class="card">
@@ -45,4 +54,6 @@ const ids=['days','hours','minutes','seconds'];
 function tick(){let d=target-Date.now();if(d<=0){ids.forEach(id=>document.getElementById(id).textContent='00');return;}const day=86400000,hour=3600000,min=60000;const days=Math.floor(d/day);d%=day;const hours=Math.floor(d/hour);d%=hour;const minutes=Math.floor(d/min);d%=min;const seconds=Math.floor(d/1000);document.getElementById('days').textContent=days;document.getElementById('hours').textContent=String(hours).padStart(2,'0');document.getElementById('minutes').textContent=String(minutes).padStart(2,'0');document.getElementById('seconds').textContent=String(seconds).padStart(2,'0');}
 tick();setInterval(tick,1000);
 </script>
+<script defer src="/vendor/supabase-2.117.3.js"></script>
+<script defer src="/online.js"></script>
 </body></html>
