@@ -14,6 +14,8 @@
 .online-dot{width:8px;height:8px;border-radius:50%;background:#81908d;flex-shrink:0}
 .online-viewers[data-state="live"] .online-dot{background:#55e6a5;box-shadow:0 0 10px #55e6a544}
 .online-viewers[data-state="offline"]{border-color:var(--line);color:var(--muted)}
+
+.trailer-announcement{max-width:440px;margin:22px auto 0;padding:16px 20px;border:1px solid #49406b;border-radius:16px;background:linear-gradient(120deg,#1b1530e6,#101d2ae6);color:#ddd5ff;font-size:clamp(16px,3vw,20px);font-weight:700;letter-spacing:.01em}
 </style>
 <link rel="stylesheet" href="/rift.css?v=2">
 </head>
@@ -53,6 +55,7 @@
 <div class="unit"><div class="num" id="seconds">--</div><div class="label">שניות</div></div>
 </div>
 <div class="release">4 בינואר 2027 • 18:00 • שעון ישראל</div>
+<div id="trailer-2-announcement" class="trailer-announcement">טריילר 2 — בקרוב</div>
 <div id="online-viewers" class="online-viewers" data-state="loading" role="status" aria-live="polite" aria-atomic="true" title="מספר משוער של דפדפנים עם האתר פתוח בחזית; כולל אותך">
 <span class="online-dot" aria-hidden="true"></span><span id="online-label">מתחבר למונה הגולשים…</span>
 </div>
