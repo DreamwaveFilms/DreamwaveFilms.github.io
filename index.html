@@ -16,6 +16,16 @@
 .online-viewers[data-state="offline"]{border-color:var(--line);color:var(--muted)}
 
 .trailer-announcement{max-width:440px;margin:22px auto 0;padding:16px 20px;border:1px solid #49406b;border-radius:16px;background:linear-gradient(120deg,#1b1530e6,#101d2ae6);color:#ddd5ff;font-size:clamp(16px,3vw,20px);font-weight:700;letter-spacing:.01em}
+
+.trailer-announcement{max-width:560px;padding:18px 14px}
+.trailer-announcement h2{font-size:clamp(17px,3vw,21px);margin:0 0 14px}
+.trailer-countdown{gap:7px}
+.trailer-countdown .unit{padding:10px 4px;border-radius:12px}
+.trailer-countdown .num{font-size:clamp(24px,5vw,34px)}
+.trailer-countdown .label{font-size:12px}
+.trailer-date{font-size:12px;font-weight:400;color:#c2bbd7;margin-top:12px}
+#trailer-2-status{font-size:14px;font-weight:400;margin-top:12px}
+.trailer-countdown[hidden]{display:none}
 </style>
 <link rel="stylesheet" href="/rift.css?v=2">
 </head>
@@ -55,7 +65,17 @@
 <div class="unit"><div class="num" id="seconds">--</div><div class="label">שניות</div></div>
 </div>
 <div class="release">4 בינואר 2027 • 18:00 • שעון ישראל</div>
-<div id="trailer-2-announcement" class="trailer-announcement">טריילר 2 — בקרוב</div>
+<section id="trailer-2-announcement" class="trailer-announcement" aria-labelledby="trailer-2-title">
+<h2 id="trailer-2-title">טריילר 2 נחשף בעוד…</h2>
+<div class="countdown trailer-countdown" id="trailer-2-countdown" aria-label="ספירה לאחור לטריילר 2">
+<div class="unit"><div class="num" id="trailer-days">--</div><div class="label">ימים</div></div>
+<div class="unit"><div class="num" id="trailer-hours">--</div><div class="label">שעות</div></div>
+<div class="unit"><div class="num" id="trailer-minutes">--</div><div class="label">דקות</div></div>
+<div class="unit"><div class="num" id="trailer-seconds">--</div><div class="label">שניות</div></div>
+</div>
+<div class="trailer-date"><time datetime="2026-10-19T16:00:00+03:00">יום שני, 19 באוקטובר 2026 • 16:00</time> • שעון ישראל</div>
+<div id="trailer-2-status" role="status" hidden>מועד החשיפה הגיע — הקישור לטריילר יתווסף כאן בקרוב.</div>
+</section>
 <div id="online-viewers" class="online-viewers" data-state="loading" role="status" aria-live="polite" aria-atomic="true" title="מספר משוער של דפדפנים עם האתר פתוח בחזית; כולל אותך">
 <span class="online-dot" aria-hidden="true"></span><span id="online-label">מתחבר למונה הגולשים…</span>
 </div>
@@ -82,4 +102,25 @@ tick();setInterval(tick,1000);
 <script defer src="/vendor/supabase-2.117.3.js"></script>
 <script defer src="/online.js"></script>
 <script defer src="/rift.js?v=3"></script>
+<script>
+(() => {
+  const trailerTarget = Date.parse('2026-10-19T16:00:00+03:00');
+  const fields = ['days', 'hours', 'minutes', 'seconds'].map(name => document.getElementById('trailer-' + name));
+  const countdown = document.getElementById('trailer-2-countdown');
+  const status = document.getElementById('trailer-2-status');
+  const title = document.getElementById('trailer-2-title');
+  function updateTrailerCountdown() {
+    const remaining = Math.max(0, Math.ceil((trailerTarget - Date.now()) / 1000));
+    const values = [Math.floor(remaining / 86400), Math.floor(remaining / 3600) % 24, Math.floor(remaining / 60) % 60, remaining % 60];
+    fields.forEach((field, index) => { field.textContent = String(values[index]).padStart(2, '0'); });
+    const ended = remaining === 0;
+    countdown.hidden = ended;
+    status.hidden = !ended;
+    title.textContent = ended ? 'טריילר 2' : 'טריילר 2 נחשף בעוד…';
+  }
+  updateTrailerCountdown();
+  setInterval(updateTrailerCountdown, 1000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) updateTrailerCountdown(); });
+})();
+</script>
 </body></html>
