@@ -5,7 +5,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Dreamwave Films | העולם המקביל: הסדק</title>
-<meta name="description" content="Dreamwave Films — העולם המקביל: הסדק. הפוסטר הרשמי, טריילר ראשון והספירה לאחור לבכורה ב־4 בינואר 2027.">
+<meta name="description" content="Dreamwave Films — העולם המקביל: הסדק. הפוסטר הרשמי, הטריילרים והספירה לאחור לבכורה ב־4 בינואר 2027.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
 :root{--bg:#05070b;--panel:#0d1119;--text:#f4f7fb;--muted:#9aa7b8;--accent:#7c5cff;--accent2:#31d5ff;--line:#1d2635}
@@ -75,12 +75,17 @@
 <div class="unit"><div class="num" id="trailer-seconds">--</div><div class="label">שניות</div></div>
 </div>
 <div class="trailer-date"><time datetime="2026-10-19T16:00:00+03:00">יום שני, 19 באוקטובר 2026 • 16:00</time> • שעון ישראל</div>
-<div id="trailer-2-status" role="status" hidden>מועד החשיפה הגיע — הקישור לטריילר יתווסף כאן בקרוב.</div>
+<a class="cta" href="https://www.youtube.com/watch?v=3VgmbYvrucQ" target="_blank" rel="noopener">לבכורה ביוטיוב ולהפעלת תזכורת</a>
+<div id="trailer-2-status" role="status" hidden>מועד הבכורה הגיע — עברו ליוטיוב לצפייה.</div>
 </section>
 <div id="online-viewers" class="online-viewers" data-state="loading" role="status" aria-live="polite" aria-atomic="true" title="מספר משוער של דפדפנים עם האתר פתוח בחזית; כולל אותך">
 <span class="online-dot" aria-hidden="true"></span><span id="online-label">מתחבר למונה הגולשים…</span>
 </div>
 <noscript><style>#online-viewers{display:none}</style></noscript>
+</section>
+<section class="card" aria-labelledby="trailer-2-video-title" style="margin-top:32px">
+<div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/3VgmbYvrucQ" title="העולם המקביל: הסדק — טריילר 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div class="content"><h2 id="trailer-2-video-title">טריילר 2 — הבכורה ביוטיוב</h2><p>הצטרפו לצפייה בטריילר השני של ״העולם המקביל: הסדק״.</p><a class="cta" href="https://www.youtube.com/watch?v=3VgmbYvrucQ" target="_blank" rel="noopener">לצפייה ביוטיוב</a></div>
 </section>
 <section class="grid">
 <div class="card">
@@ -110,12 +115,14 @@ tick();setInterval(tick,1000);
   const countdown = document.getElementById('trailer-2-countdown');
   const status = document.getElementById('trailer-2-status');
   const title = document.getElementById('trailer-2-title');
+  const premiereLink = document.querySelector('#trailer-2-announcement .cta');
   function updateTrailerCountdown() {
     const remaining = Math.max(0, Math.ceil((trailerTarget - Date.now()) / 1000));
     const values = [Math.floor(remaining / 86400), Math.floor(remaining / 3600) % 24, Math.floor(remaining / 60) % 60, remaining % 60];
     fields.forEach((field, index) => { field.textContent = String(values[index]).padStart(2, '0'); });
     const ended = remaining === 0;
     countdown.hidden = ended;
+    premiereLink.textContent = ended ? 'לצפייה בטריילר 2 ביוטיוב' : 'לבכורה ביוטיוב ולהפעלת תזכורת';
     status.hidden = !ended;
     title.textContent = ended ? 'טריילר 2' : 'טריילר 2 נחשף בעוד…';
   }
