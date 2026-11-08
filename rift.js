@@ -5,7 +5,7 @@
   // Same Israeli premiere instant as the existing countdown. Growth is date-based,
   // not visit-based: refreshing the page never resets the opening.
   const start = Date.parse('2026-10-12T00:00:00+03:00');
-  const release = Date.parse('2027-01-04T18:00:00+02:00');
+  const release = Date.parse('2027-01-08T18:00:00+02:00');
   let waveAmplitude = 4;
   let wavePeriod = 12;
   function updateRift() {
