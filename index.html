@@ -5,7 +5,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Dreamwave Films | העולם המקביל: הסדק</title>
-<meta name="description" content="Dreamwave Films — העולם המקביל: הסדק. הפוסטר הרשמי, הטריילרים והספירה לאחור לבכורה ב־4 בינואר 2027.">
+<meta name="description" content="Dreamwave Films — העולם המקביל: הסדק. הפוסטר הרשמי, הטריילרים והספירה לאחור לבכורה ב־8 בינואר 2027.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
 :root{--bg:#05070b;--panel:#0d1119;--text:#f4f7fb;--muted:#9aa7b8;--accent:#7c5cff;--accent2:#31d5ff;--line:#1d2635}
@@ -65,7 +65,7 @@
 <div class="unit"><div class="num" id="minutes">--</div><div class="label">דקות</div></div>
 <div class="unit"><div class="num" id="seconds">--</div><div class="label">שניות</div></div>
 </div>
-<div class="release">4 בינואר 2027 • 18:00 • שעון ישראל</div>
+<div class="release">יום שישי, 8 בינואר 2027 • 18:00 • שעון ישראל</div>
 <section id="trailer-2-announcement" class="trailer-announcement" aria-labelledby="trailer-2-title">
 <h2 id="trailer-2-title">טריילר 2 נחשף בעוד…</h2>
 <div class="countdown trailer-countdown" id="trailer-2-countdown" aria-label="ספירה לאחור לטריילר 2">
@@ -100,14 +100,14 @@
 <footer>© 2026 Dreamwave Films • העולם המקביל: הסדק</footer>
 </div>
 <script>
-const target=new Date('2027-01-04T18:00:00+02:00').getTime();
+const target=new Date('2027-01-08T18:00:00+02:00').getTime();
 const ids=['days','hours','minutes','seconds'];
 function tick(){let d=target-Date.now();if(d<=0){ids.forEach(id=>document.getElementById(id).textContent='00');return;}const day=86400000,hour=3600000,min=60000;const days=Math.floor(d/day);d%=day;const hours=Math.floor(d/hour);d%=hour;const minutes=Math.floor(d/min);d%=min;const seconds=Math.floor(d/1000);document.getElementById('days').textContent=days;document.getElementById('hours').textContent=String(hours).padStart(2,'0');document.getElementById('minutes').textContent=String(minutes).padStart(2,'0');document.getElementById('seconds').textContent=String(seconds).padStart(2,'0');}
 tick();setInterval(tick,1000);
 </script>
 <script defer src="/vendor/supabase-2.117.3.js"></script>
 <script defer src="/online.js"></script>
-<script defer src="/rift.js?v=3"></script>
+<script defer src="/rift.js?v=4"></script>
 <script>
 (() => {
   const trailerTarget = Date.parse('2026-10-19T16:00:00+03:00');
