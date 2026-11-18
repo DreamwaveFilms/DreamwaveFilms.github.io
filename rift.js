@@ -25,6 +25,21 @@
   // Deform the original SVG points together: the glow, edges and branches stay joined.
   // Geometry is parsed once; no filters, libraries or layout reads in the frame loop.
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  // Trial: chipped rock planes share the same travelling deformation as the rim.
+  const rim = scene.querySelector('.rift-opening svg > path');
+  if (rim) {
+    const banks = [[[210,10],[188,138],[145,222],[163,278],[105,371],[125,417],[95,502],[152,565],[140,630],[185,732],[193,860]],[[210,10],[228,133],[260,208],[249,280],[298,342],[269,436],[290,492],[238,582],[246,642],[221,737],[193,860]]];
+    const planes = ['', '', '', ''];
+    banks.forEach((bank,b) => bank.slice(1).forEach(([x,y],i) => {
+      const [a,h]=bank[i], dir=b?1:-1;
+      const tip=Math.sin(Math.PI*(h+y)/1800);
+      const mid=Math.round((a+x)/2+dir*(7+i%4)*tip), level=Math.round(h+(y-h)*(.37+(i%3)*.08));
+      const chip=Math.round(mid+dir*(11+i%5)*tip);
+      planes[b*2]+='M'+a+' '+h+'L'+mid+' '+level+' '+x+' '+y+'Z';
+      planes[b*2+1]+='M'+a+' '+h+'L'+chip+' '+(level-7)+' '+mid+' '+level+'Z';
+    }));
+    planes.forEach((d,i)=>{const p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',d);p.setAttribute('fill',['#777183','#343342','#353b46','#85919b'][i]);p.setAttribute('opacity',['.84','.88','.94','.69'][i]);rim.after(p);});
+  }
   const wavePaths = Array.from(scene.querySelectorAll('.rift-opening svg path')).map(node => {
     const original = node.getAttribute('d');
     const tokens = original.match(/[a-zA-Z]|[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:e[-+]?\d+)?/g);
