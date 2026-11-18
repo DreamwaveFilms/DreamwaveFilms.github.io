@@ -29,9 +29,7 @@
 .trailer-countdown[hidden]{display:none}
 </style>
 <link rel="stylesheet" href="/rift.css?v=2">
-<style>
-.cinema-scene .rift-opening{transform:scale(calc(.42 + var(--rift-width)*.72),var(--rift-height));opacity:calc(.45 + var(--rift-opacity)*.53)}
-</style></head>
+</head>
 <body>
 <div class="cinema-scene" aria-hidden="true">
 <div class="rift-nebula"></div><div class="rift-stars"></div>
@@ -47,12 +45,6 @@
 <path d="M210 10 188 138 145 222 163 278 105 371 125 417 95 502 152 565 140 630 185 732 193 860 M193 860 221 737 246 642 238 582 290 492 269 436 298 342 249 280 260 208 228 133 210 10" fill="none" stroke="url(#rift-edge)" stroke-width="3"/>
 <path d="m145 222-36-28-12-50m8 227-37-32-18 13m45 150-37 38 9 32m193-364 40-31 8-45m-10 210 38-39 17 10m-63 179 45 26 9 43m-98 81 26 44" fill="none" stroke="url(#rift-edge)" stroke-width="1.5" opacity=".45"/>
 
-<g aria-hidden="true" fill="none" stroke-linejoin="bevel">
-<path d="M210 10 188 138 145 222 163 278 105 371 125 417 95 502 152 565 140 630 185 732 193 860" stroke="#9b76fb" stroke-width="17" opacity=".24"/>
-<path d="M210 10 188 138 145 222 163 278 105 371 125 417 95 502 152 565 140 630 185 732 193 860" stroke="#efe4ff" stroke-width="4"/>
-<path d="M210 10 228 133 260 208 249 280 298 342 269 436 290 492 238 582 246 642 221 737 193 860" stroke="#86e4ef" stroke-width="5"/>
-<path d="M145 222 121 202 106 205 92 179 68 172 50 142 M106 205 94 213 74 209 M105 371 83 351 60 355 42 332 15 322 M298 342 314 317 338 310 345 286 366 269 M338 310 360 314 381 299 M290 492 314 509 327 504 351 526 374 529 M140 630 111 619 92 637 62 635" stroke="#b6b1d9" stroke-width="2.6" opacity=".85"/>
-<path d="M163 278 177 317 146 376 155 405 130 468 150 436 160 405 154 377 184 318Z M260 208 237 249 245 282 222 326 253 281 245 249Z M238 582 211 624 217 653 200 709 224 655 219 625Z" fill="#7e94bf" opacity=".55"/></g>
 <g class="rift-energy" fill="none" stroke-linecap="round">
 <path d="M210 10 188 138 145 222 163 278 105 371 125 417 95 502 152 565 140 630 185 732 193 860" stroke="#9574ff" stroke-width="10" opacity=".16"/>
 <path d="M193 860 221 737 246 642 238 582 290 492 269 436 298 342 249 280 260 208 228 133 210 10" stroke="#64dfff" stroke-width="10" opacity=".16"/>
@@ -115,7 +107,7 @@ tick();setInterval(tick,1000);
 </script>
 <script defer src="/vendor/supabase-2.117.3.js"></script>
 <script defer src="/online.js"></script>
-<script defer src="/rift.js?v=7"></script>
+<script defer src="/rift.js?v=8"></script>
 <script>
 (() => {
   const trailerTarget = Date.parse('2026-10-19T16:00:00+03:00');
